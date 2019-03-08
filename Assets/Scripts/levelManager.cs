@@ -8,7 +8,7 @@ public class levelManager : MonoBehaviour {
 
     public void Update()
     {
-        /*
+        
         if (Input.GetButtonDown("Fire1"))
         {
             if (Application.loadedLevelName == "Home")
@@ -40,7 +40,7 @@ public class levelManager : MonoBehaviour {
                 Application.LoadLevel(Application.loadedLevel);
             }
         }
-        */
+        
     }
 
     public void NextTutorialScreen1()
