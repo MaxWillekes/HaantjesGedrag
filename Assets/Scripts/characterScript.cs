@@ -7,51 +7,45 @@ public class characterScript : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer ownSpriteRenderer;
 
-    public float waitTimer;
-
     public float moveSpeed;    
     public GameObject furniture;
 
-    public GameObject[] People;
     public GameObject audio;
-    public float time;
-    
+
+    public GameObject GameHandler;
+
+    public Fungus.VariableReference CloseEnough;
+    bool Close;
+    public Fungus.VariableReference Interact;
+    public Fungus.VariableReference InteractableCharacter;
+
     void Start()
     {
+        Close = false;
         rb = GetComponent<Rigidbody2D>();
         ownSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    public void Update()
     {
         float inputHor = Input.GetAxisRaw("Horizontal");
         float inputVer = Input.GetAxisRaw("Vertical");
 
         rb.velocity = new Vector2(inputHor * moveSpeed, inputVer * moveSpeed);
 
-        if (Input.GetKeyDown("space")/* || Input.GetButtonDown("Fire1")*/)
+        if (Input.GetKeyDown("space") && Close == true )
+        {
+            Interact.Set(true);
+        }
+
+        /*
+        if (Input.GetKeyDown("space") || Input.GetButtonDown("Fire1"))
         {
             if (furniture) {
-                if (!furniture.GetComponent<objectScript>().used || furniture.GetComponent<objectScript>().attention)
-                {
-                    waitTimer = 1;
-                    rb.simulated = false;
-                    ownSpriteRenderer.enabled = false;
-                    var animation = furniture.GetComponent<Animation>();
-
-                    foreach (GameObject Person in People)
-                    {
-                        Person.GetComponent<tutorialPersonScript>().TriggerFunction(furniture);
-                    }
-
-                    furniture.GetComponent<objectScript>().used = true;
-                }
-
                 if (furniture.name == "Clock")
                 {
                     audio.transform.Find("clock").GetComponent<AudioSource>().Pause();
                     audio.transform.Find("crazy_clock").GetComponent<AudioSource>().Play();
-                    time = Time.time;
                 }
                 if (furniture.name == "Lamp")
                 {
@@ -85,44 +79,22 @@ public class characterScript : MonoBehaviour
 
             }
         }
-
-        try
-        {
-            if (waitTimer > 0)
-            {
-                waitTimer -= Time.deltaTime;
-                furniture.GetComponent<Animator>().enabled = true;
-                furniture.GetComponent<Animator>().SetBool("Triggerd", true);
-            }
-            else if (!ownSpriteRenderer.enabled)
-            {
-                rb.simulated = true;
-                ownSpriteRenderer.enabled = true;
-            }
-            else if (waitTimer <= 0)
-            {
-                furniture.GetComponent<Animator>().SetBool("Triggerd", false);
-
-            }
-        }
-        catch { }
-
+        */
     }
 
     void OnTriggerEnter2D(Collider2D collider) //trigger op meubel
     {
-        furniture = collider.gameObject;
-        if (!furniture.GetComponent<objectScript>().used || furniture.GetComponent<objectScript>().attention)
-        {
-            var emission = furniture.GetComponent<ParticleSystem>().emission;
-            emission.enabled = true;
-        }
+        InteractableCharacter.Set(collider.gameObject);
+        CloseEnough.Set(true);
+        Close = true;
     }
 
     void OnTriggerExit2D(Collider2D collider) //trigger op meubel
     {
-        var emission = furniture.GetComponent<ParticleSystem>().emission;
-        emission.enabled = false;
-        furniture = null;        
+        furniture = null;
+        InteractableCharacter.Set(furniture);
+        CloseEnough.Set(false);
+        Interact.Set(false);
+        Close = false;
     }
 }
