@@ -18,6 +18,7 @@ public class characterScript : MonoBehaviour
     bool Close;
     public Fungus.VariableReference Interact;
     public Fungus.VariableReference InteractableCharacter;
+    public Fungus.VariableReference RecentlySpoken;
 
     void Start()
     {
@@ -75,8 +76,6 @@ public class characterScript : MonoBehaviour
                 {
                     audio.transform.Find("Painting fall").GetComponent<AudioSource>().Play();
                 }
-                
-
             }
         }
         */
@@ -96,5 +95,6 @@ public class characterScript : MonoBehaviour
         CloseEnough.Set(false);
         Interact.Set(false);
         Close = false;
+        RecentlySpoken.Set(false);
     }
 }
