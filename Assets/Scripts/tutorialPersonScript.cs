@@ -30,20 +30,20 @@ public class tutorialPersonScript : MonoBehaviour
 
     }
 
-    public void TriggerFunction(GameObject furniture)
+    public void TriggerFunction(GameObject Interactable)
     {
-        objectScript furnitureScript = furniture.GetComponent<objectScript>();
-        if (furnitureScript.room == room)
+        objectScript InteractableScript = Interactable.GetComponent<objectScript>();
+        if (InteractableScript.room == room)
         {
-            if (furnitureScript.attention)
+            if (InteractableScript.attention)
             {
-                attention = furnitureScript.attentionValue;
-                scared += furnitureScript.scareValue;
+                attention = InteractableScript.attentionValue;
+                scared += InteractableScript.scareValue;
             }
-            else if (attention > 0 && !furnitureScript.used)
+            else if (attention > 0 && !InteractableScript.used)
             {
-                attention = furnitureScript.attentionValue;
-                scared += furnitureScript.scareValue;
+                attention = InteractableScript.attentionValue;
+                scared += InteractableScript.scareValue;
             }
         }
     }

@@ -7,12 +7,17 @@ public class characterScript : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer ownSpriteRenderer;
 
-    public float moveSpeed;    
-    public GameObject furniture;
+    public float moveSpeed;
+    public float calculationSpeed;
+
+    public GameObject Interactable;
 
     public GameObject audio;
 
     public GameObject GameHandler;
+
+    public Animator animation;
+    public Sprite idleSprite;
 
     public Fungus.VariableReference CloseEnough;
     bool Close;
@@ -32,66 +37,52 @@ public class characterScript : MonoBehaviour
         float inputHor = Input.GetAxisRaw("Horizontal");
         float inputVer = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(inputHor * moveSpeed, inputVer * moveSpeed);
+        //Debug.Log("Hor =" + inputHor + "   |   Ver =" + inputVer);
+        var actualMoveSpeed = ((calculationSpeed / (transform.position.y / 1.5f)) + moveSpeed);
 
-        if (Input.GetKeyDown("space") && Close == true )
-        {
+        //Scales the player speed to the Y position of thier character
+        rb.velocity = new Vector2(inputHor * actualMoveSpeed, inputVer * actualMoveSpeed);
+
+        if(inputHor > 0 || inputVer > 0 || inputHor < 0 || inputVer < 0){
+            animation.enabled = true;
+        }else{
+            animation.enabled = false;
+            ownSpriteRenderer.sprite = idleSprite;
+        }
+
+        if(inputHor < 0){
+            ownSpriteRenderer.flipX = true;
+        }else if(inputHor > 0){
+            ownSpriteRenderer.flipX = false;
+        }
+
+        //Scales the player size according to the Y position of thier character.
+        transform.localScale = new Vector3(0.165f - (transform.position.y / 112), 0.165f - (transform.position.y / 112), 0.165f - (transform.position.y / 112));
+
+        if (Input.GetKeyDown("space") && Close == true ){
             Interact.Set(true);
         }
-
-        /*
-        if (Input.GetKeyDown("space") || Input.GetButtonDown("Fire1"))
-        {
-            if (furniture) {
-                if (furniture.name == "Clock")
-                {
-                    audio.transform.Find("clock").GetComponent<AudioSource>().Pause();
-                    audio.transform.Find("crazy_clock").GetComponent<AudioSource>().Play();
-                }
-                if (furniture.name == "Lamp")
-                {
-                    audio.transform.Find("lamp").GetComponent<AudioSource>().Play();
-                }
-                if(furniture.name == "Cabinet")
-                {
-                    audio.transform.Find("cabinet").GetComponent<AudioSource>().Play();
-                }
-                if (furniture.name == "Chair")
-                {
-                    audio.transform.Find("Chair").GetComponent<AudioSource>().Play();
-                }
-                if (furniture.name == "TV")
-                {
-                    audio.transform.Find("TV").GetComponent<AudioSource>().Play();
-                }
-                if (furniture.name == "Bookcase")
-                {
-                    audio.transform.Find("Pot").GetComponent<AudioSource>().Play();
-                }
-                if (furniture.name == "Painting wall")
-                {
-                    audio.transform.Find("Painting").GetComponent<AudioSource>().Play();
-                }
-                if (furniture.name == "Painting ground")
-                {
-                    audio.transform.Find("Painting fall").GetComponent<AudioSource>().Play();
-                }
-            }
-        }
-        */
     }
 
-    void OnTriggerEnter2D(Collider2D collider) //trigger op meubel
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        InteractableCharacter.Set(collider.gameObject);
+        Interactable = collider.gameObject;
+
+        InteractableCharacter.Set(Interactable);
         CloseEnough.Set(true);
         Close = true;
+
+        var emission = Interactable.GetComponent<ParticleSystem>().emission;
+        emission.enabled = true;
     }
 
-    void OnTriggerExit2D(Collider2D collider) //trigger op meubel
+    void OnTriggerExit2D(Collider2D collider)
     {
-        furniture = null;
-        InteractableCharacter.Set(furniture);
+        var emission = Interactable.GetComponent<ParticleSystem>().emission;
+        emission.enabled = false;
+
+        Interactable = null;
+        InteractableCharacter.Set(Interactable);
         CloseEnough.Set(false);
         Interact.Set(false);
         Close = false;
