@@ -4,6 +4,33 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: c_bar_konijn_m_idle
     21300002: c_bar_konijn_m_active
+    21300004: c_bar_konijn_m_idle_00
+    21300006: c_bar_konijn_m_idle_01
+    21300008: c_bar_konijn_m_idle_02
+    21300010: c_bar_konijn_m_idle_03
+    21300012: c_bar_konijn_m_idle_04
+    21300014: c_bar_konijn_m_idle_05
+    21300016: c_bar_konijn_m_idle_0
+    21300018: c_bar_konijn_m_idle_1
+    21300020: c_bar_konijn_m_idle_2
+    21300022: c_bar_konijn_m_idle_3
+    21300024: c_bar_konijn_m_idle_4
+    21300026: c_bar_konijn_m_idle_5
+    21300028: c_bar_jack_idle_0
+    21300030: c_bar_jack_idle_1
+    21300032: c_bar_jack_idle_2
+    21300034: c_bar_jack_idle_3
+    21300036: c_bar_jack_idle_4
+    21300038: c_bar_jack_idle_5
+    21300040: c_bar_jack_active
+    21300042: spritesheet_jack_7
+    21300044: spritesheet_jack_0
+    21300046: spritesheet_jack_1
+    21300048: spritesheet_jack_2
+    21300050: spritesheet_jack_3
+    21300052: spritesheet_jack_4
+    21300054: spritesheet_jack_5
+    21300056: spritesheet_jack_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -86,41 +113,141 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: c_bar_konijn_m_idle
+      name: spritesheet_jack_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 36
-        width: 445
-        height: 924
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 30
+        width: 485
+        height: 1007
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eb8318900bd2f3439369725374ce427
+      spriteID: b5c7cb464d638454cade81ddfc405508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: c_bar_konijn_m_active
+      name: spritesheet_jack_1
       rect:
         serializedVersion: 2
-        x: 532
-        y: 16
-        width: 483
-        height: 960
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 509
+        y: 28
+        width: 490
+        height: 1016
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3c2ef8afc354544eb641115b9f316aa
+      spriteID: bf5e9572b6443624aafc4adbdad81046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_jack_2
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 28
+        width: 488
+        height: 1040
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458539a29e2e8954a9453cb40fd93142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_jack_3
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 29
+        width: 497
+        height: 1051
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01e069d9a85fd54ab9916b19a88ab66
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_jack_4
+      rect:
+        serializedVersion: 2
+        x: 2097
+        y: 28
+        width: 489
+        height: 1031
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ebdc92e3e7ba984ebff514a8ca430af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_jack_5
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 28
+        width: 473
+        height: 1011
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 135aed932d8a59e419d043b0a9fc4121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_jack_6
+      rect:
+        serializedVersion: 2
+        x: 3123
+        y: 0
+        width: 622
+        height: 1080
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9e1d6f16d7ba44098b4a6bcdee17c7
       vertices: []
       indices: 
       edges: []
