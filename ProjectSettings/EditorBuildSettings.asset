@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Slaapkamer&Werk.unity
-    guid: 2814542809931d24db6d5268df6cb1e4
+    path: Assets/Scenes/Game.unity
+    guid: 42c685bf08494d84eaa22d6efb670ba4
   m_configObjects: {}

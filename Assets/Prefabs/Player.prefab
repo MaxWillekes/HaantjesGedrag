@@ -133,6 +133,9 @@ MonoBehaviour:
     variable: {fileID: 0}
   RecentlySpoken:
     variable: {fileID: 0}
+  InBar:
+    variable: {fileID: 0}
+  scalingException: 0
 --- !u!95 &8075758526619372074
 Animator:
   serializedVersion: 3
